@@ -1,0 +1,128 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.searchBox {
+  composes: glass from global;
+  padding: 1.5rem;
+}
+
+.form {
+  display: flex;
+  gap: 1rem;
+}
+
+.input {
+  composes: input from global;
+  flex: 1;
+}
+
+.searchBtn {
+  composes: btn btnPrimary from global;
+  padding: 0 2rem;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  composes: glass from global;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.2);
+}
+
+.thumb {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.cardInfo {
+  padding: 1rem;
+}
+
+.cardInfo h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.category {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+.actionBar {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  z-index: 100;
+  animation: slideUp 0.3s ease-out;
+  width: 90%;
+  max-width: 600px;
+}
+
+@keyframes slideUp {
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.actionContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.daySelect {
+  composes: select from global;
+  padding: 0.5rem 1rem;
+}
+
+.addBtn {
+  composes: btn btnPrimary from global;
+}
+
+@media (max-width: 600px) {
+  .form {
+    flex-direction: column;
+  }
+  
+  .actionContent {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .daySelect, .addBtn {
+    width: 100%;
+  }
+}

@@ -9,11 +9,56 @@
 
 .header {
   margin-bottom: 2rem;
-  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding-top: 2rem;
+  gap: 1.5rem;
+  position: relative;
+  padding-top: 1rem;
+}
+
+.tabs {
+  display: flex;
+  background: var(--bg-card);
+  padding: 0.5rem;
+  border-radius: 999px;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+}
+
+.tab {
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.activeTab {
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.userControls {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .userControls {
+    position: static;
+  }
 }
 
 .backLink {
