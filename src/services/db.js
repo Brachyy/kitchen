@@ -83,9 +83,11 @@ export const getWeeklyPlan = async (familyId) => {
 // Add meal to a specific day
 export const addMealToPlan = async (familyId, day, meal) => {
   const planRef = doc(db, "plans", familyId);
-  await updateDoc(planRef, {
+  // Use setDoc with merge to ensure document exists, although getWeeklyPlan should have created it.
+  // This is safer for race conditions or if the plan was deleted.
+  await setDoc(planRef, {
     [day]: arrayUnion(meal)
-  });
+  }, { merge: true });
 };
 
 // Remove meal from a specific day

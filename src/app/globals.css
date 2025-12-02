@@ -111,3 +111,59 @@ button {
   cursor: pointer;
   font-family: inherit;
 }
+
+/* Premium Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.4);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btnSecondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .btnSecondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+  .btnSecondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}

@@ -21,28 +21,40 @@
 
 .tabs {
   display: flex;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.3rem;
-  border-radius: 999px;
-  gap: 0.3rem;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 4px;
+  border-radius: 16px;
+  gap: 4px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tab {
-  padding: 0.5rem 1.5rem;
-  border-radius: 999px;
+  padding: 0.6rem 1.5rem;
+  border-radius: 12px;
   border: none;
   background: transparent;
   color: var(--text-secondary);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
 }
 
 .activeTab {
-  background: var(--primary);
-  color: white;
-  box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tabs {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .activeTab {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
 }
 
 .content {
