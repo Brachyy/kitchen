@@ -76,7 +76,7 @@
 
 .actionBar {
   position: fixed;
-  bottom: 2rem;
+  bottom: 6rem;
   left: 50%;
   transform: translateX(-50%);
   background: var(--bg-card);

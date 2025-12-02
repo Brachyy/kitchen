@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { getWeeklyPlan, addMealToPlan, removeMealFromPlan } from '@/services/db';
+import { getWeeklyPlan, addMealToPlan, removeMealFromPlan, getUserFamily } from '@/services/db';
 import Planner from '@/components/Planner';
 import ShoppingList from '@/components/ShoppingList';
 import RecipeModal from '@/components/RecipeModal';
 import MealSearch from '@/components/MealSearch';
+import FamilyManager from '@/components/FamilyManager';
 import styles from './PlannerView.module.css';
 
 export default function PlannerView() {
@@ -20,7 +21,11 @@ export default function PlannerView() {
 
   useEffect(() => {
     if (user) {
-      setFamilyId(user.uid);
+      const fetchFamily = async () => {
+        const id = await getUserFamily(user.uid);
+        setFamilyId(id || user.uid); // Fallback to user ID if no family
+      };
+      fetchFamily();
     }
   }, [user]);
 
@@ -80,6 +85,12 @@ export default function PlannerView() {
       </div>
 
       <div className={styles.content}>
+        <FamilyManager 
+          user={user} 
+          currentFamilyId={familyId} 
+          onFamilyUpdate={setFamilyId} 
+        />
+
         {activeTab === 'search' ? (
           <MealSearch onAddMeal={handleAddMeal} />
         ) : (
