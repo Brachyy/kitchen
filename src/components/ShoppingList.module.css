@@ -1,0 +1,47 @@
+.container {
+  composes: glass from global;
+  padding: 1.5rem;
+  min-width: 300px;
+}
+
+.empty {
+  opacity: 0.6;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.categoryTitle {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.items {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed rgba(0,0,0,0.05);
+}
+
+.measure {
+  opacity: 0.6;
+  font-size: 0.85rem;
+  text-align: right;
+  margin-left: 1rem;
+}

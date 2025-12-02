@@ -1,0 +1,121 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.searchSection {
+  composes: glass from global;
+  padding: 1.5rem;
+}
+
+.searchForm {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.input, .select {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+}
+
+.input {
+  flex: 1;
+}
+
+.button {
+  padding: 0 1.5rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.results {
+  margin-top: 1rem;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-bottom: 1px solid #eee;
+}
+
+.resultItem:hover {
+  background: #f5f5f5;
+}
+
+.thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.addIcon {
+  margin-left: auto;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.weekGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.dayCard {
+  composes: glass from global;
+  padding: 1rem;
+  min-height: 150px;
+}
+
+.dayTitle {
+  margin-bottom: 1rem;
+  color: var(--primary);
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 0.5rem;
+}
+
+.mealList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mealItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.5);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 1.2rem;
+  padding: 0 0.3rem;
+}
+
+.emptyText {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  font-style: italic;
+}
