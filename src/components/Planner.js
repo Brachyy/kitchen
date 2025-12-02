@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import styles from './Planner.module.css';
-import { getRecipesByIngredient, getRecipeById } from '@/services/recipeApi';
+import { getRecipeById, smartSearchRecipes } from '@/services/recipeApi';
 import { extractIngredients } from '@/utils/shoppingListAlgo';
 
 export default function Planner({ plan, onAdd, onRemove, onRecipeClick }) {
@@ -16,15 +16,19 @@ export default function Planner({ plan, onAdd, onRemove, onRecipeClick }) {
     if (!searchTerm.trim()) return;
     
     setIsSearching(true);
-    // Search by main ingredient for now as it's the same API
-    const results = await getRecipesByIngredient(searchTerm);
+    // Use smart search to find by name, category, or ingredient
+    const results = await smartSearchRecipes(searchTerm);
     setSearchResults(results || []);
     setIsSearching(false);
   };
 
   const handleAddMeal = async (meal) => {
-    // Fetch full details to get ingredients
-    const fullMeal = await getRecipeById(meal.idMeal);
+    let fullMeal = meal;
+    // If we don't have instructions, fetch full details (e.g. if we used filter by ingredient)
+    if (!meal.strInstructions) {
+      fullMeal = await getRecipeById(meal.idMeal);
+    }
+
     if (fullMeal) {
       // Extract ingredients and add to meal object
       const ingredients = extractIngredients(fullMeal);

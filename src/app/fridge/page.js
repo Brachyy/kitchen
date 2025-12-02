@@ -5,7 +5,7 @@ import Link from 'next/link';
 import IngredientInput from '@/components/IngredientInput';
 import RecipeList from '@/components/RecipeList';
 import RecipeModal from '@/components/RecipeModal';
-import { getRecipesByIngredient, getRecipeById } from '@/services/recipeApi';
+import { getRecipeById, smartSearchRecipes } from '@/services/recipeApi';
 import styles from './page.module.css';
 
 export default function FridgePage() {
@@ -17,7 +17,8 @@ export default function FridgePage() {
   const handleSearch = async (ingredient) => {
     setLoading(true);
     setSearched(true);
-    const results = await getRecipesByIngredient(ingredient);
+    // Use smart search here too for better experience
+    const results = await smartSearchRecipes(ingredient);
     setRecipes(results);
     setLoading(false);
   };
