@@ -81,13 +81,17 @@
   composes: glass from global;
   padding: 1rem;
   min-height: 150px;
+  background: var(--card-bg); /* Ensure using the new opaque variable */
 }
 
 .dayTitle {
   margin-bottom: 1rem;
   color: var(--primary);
-  border-bottom: 1px solid var(--card-border);
+  border-bottom: 2px solid var(--primary); /* Thicker border for visibility */
   padding-bottom: 0.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .mealList {
@@ -101,21 +105,29 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
-  background: rgba(255,255,255,0.5);
-  padding: 0.5rem;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.5); /* Semi-transparent white backing */
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
 }
 
 .removeBtn {
   background: none;
   border: none;
-  color: #ef4444;
+  color: #ef4444; /* Explicit red for remove */
   font-size: 1.2rem;
-  padding: 0 0.3rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.removeBtn:hover {
+  opacity: 1;
 }
 
 .emptyText {
-  font-size: 0.8rem;
+  color: var(--foreground);
   opacity: 0.5;
   font-style: italic;
 }

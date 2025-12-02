@@ -1,15 +1,16 @@
 :root {
-  /* Premium Color Palette */
-  --background: #f8f9fa;
-  --foreground: #1a1a1a;
+  /* Premium Color Palette - High Contrast */
+  --background: #f0f2f5;
+  --foreground: #050505; /* Pitch black for text */
 
-  --primary: #6366f1; /* Indigo */
-  --primary-hover: #4f46e5;
-  --secondary: #ec4899; /* Pink */
-  --accent: #8b5cf6; /* Violet */
+  --primary: #4f46e5; /* Indigo 600 - Stronger */
+  --primary-hover: #4338ca;
+  --secondary: #db2777; /* Pink 600 - Stronger */
+  --accent: #7c3aed; /* Violet 600 */
 
-  --card-bg: rgba(255, 255, 255, 0.7);
-  --card-border: rgba(255, 255, 255, 0.5);
+  /* Glass Effect - More Opaque for Readability */
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(255, 255, 255, 0.8);
   --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 
   --font-sans: var(--font-geist-sans);
@@ -19,16 +20,16 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0f172a; /* Slate 900 */
-    --foreground: #f1f5f9;
+    --foreground: #f8fafc; /* White for text */
 
     --primary: #818cf8;
     --primary-hover: #6366f1;
     --secondary: #f472b6;
     --accent: #a78bfa;
 
-    --card-bg: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity */
-    --card-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --card-bg: rgba(30, 41, 59, 0.85); /* More opaque dark glass */
+    --card-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -59,16 +60,36 @@ body {
     radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
     radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
   background-attachment: fixed;
+  background-size: cover;
 }
 
-/* Glassmorphism Utility */
+/* Glassmorphism Utility - Enhanced */
 .glass {
   background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px); /* Stronger blur */
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--card-border);
   box-shadow: var(--glass-shadow);
   border-radius: 16px;
+}
+
+/* Global Input Styles for Visibility */
+input, select, textarea {
+  background: rgba(255, 255, 255, 0.9) !important; /* Force opaque background */
+  border: 1px solid #ccc !important;
+  color: #000 !important; /* Always black text in inputs */
+  padding: 0.75rem !important;
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+}
+
+/* Dark mode overrides for inputs */
+@media (prefers-color-scheme: dark) {
+  input, select, textarea {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+  }
 }
 
 a {

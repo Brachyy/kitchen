@@ -8,25 +8,19 @@
 
 .input {
   flex: 1;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--card-border);
-  background: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
-  color: var(--foreground);
-  transition: all 0.2s;
+  /* Styles handled by global input selector for consistency */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--primary);
+  border-color: var(--primary) !important;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .button {
   padding: 0 2rem;
-  border-radius: 12px;
+  border-radius: 8px;
   border: none;
   background: var(--primary);
   color: white;
@@ -38,4 +32,5 @@
 
 .button:hover {
   background: var(--primary-hover);
+  transform: translateY(-1px);
 }
