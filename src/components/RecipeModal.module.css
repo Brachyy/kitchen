@@ -14,15 +14,16 @@
 }
 
 .modal {
-  background: var(--background);
-  width: 100%;
+  background: var(--bg-card);
+  width: 95%; /* Use percentage width */
   max-width: 800px;
   max-height: 90vh;
-  border-radius: 16px;
+  border-radius: var(--radius);
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-lg);
   animation: slideUp 0.3s ease-out;
+  border: 1px solid var(--border);
 }
 
 @keyframes slideUp {
@@ -69,26 +70,27 @@
 }
 
 .titleSection h2 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem); /* Responsive font size */
   margin-bottom: 0.5rem;
-  color: var(--primary);
+  color: var(--text-primary);
 }
 
 .category {
   display: inline-block;
-  background: var(--secondary);
-  color: white;
-  padding: 0.25rem 0.75rem;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  padding: 0.25rem 1rem;
   border-radius: 999px;
   font-size: 0.875rem;
   font-weight: 600;
+  border: 1px solid var(--border);
 }
 
 .content {
   padding: 2rem;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .section h3 {

@@ -1,40 +1,47 @@
 .container {
   min-height: 100vh;
-  padding: 2rem;
+  padding: 2rem 1rem; /* Reduce padding on mobile */
   max-width: 1200px;
+  width: 100%; /* Ensure full width */
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .header {
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
+  padding-top: 2rem;
+  width: 100%;
 }
 
 .backLink {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--primary);
+  color: var(--text-secondary);
   font-weight: 600;
-  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: all 0.2s;
 }
 
 .backLink:hover {
-  opacity: 0.8;
+  background: var(--bg-card);
+  color: var(--primary);
 }
 
 .title {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: clamp(2rem, 6vw, 3rem); /* Responsive font size */
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  width: 100%;
 }
 
 .subtitle {
-  font-size: 1.2rem;
   color: var(--foreground);
   opacity: 0.8;
 }

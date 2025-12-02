@@ -5,43 +5,62 @@
   justify-content: center;
   min-height: 100vh;
   padding: 2rem;
+  background: radial-gradient(circle at top center, var(--primary-light), transparent 70%);
+  width: 100%; /* Ensure full width */
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  max-width: 800px;
-  width: 100%;
+  gap: 3rem;
+  max-width: 900px;
+  width: 100%; /* Responsive width */
   text-align: center;
 }
 
 .title {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 8vw, 4.5rem); /* Responsive font size */
   line-height: 1.1;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  width: 100%;
 }
 
 .gradientText {
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+
+.gradientText::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: var(--primary-light);
+  z-index: -1;
+  transform: rotate(-2deg);
+  opacity: 0.6;
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  color: var(--foreground);
-  opacity: 0.8;
-  margin-bottom: 2rem;
+  font-size: clamp(1rem, 4vw, 1.5rem); /* Responsive font size */
+  color: var(--text-secondary);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Smaller min-width for mobile */
+  gap: 2rem;
   width: 100%;
+  margin-top: 2rem;
 }
 
 .card {
