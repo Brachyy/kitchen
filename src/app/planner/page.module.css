@@ -68,7 +68,21 @@
     grid-template-columns: 1fr;
   }
   
+  .container {
+    padding: 1rem; /* Reduce padding to prevent squeeze */
+  }
+  
   .listSection {
     position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem; /* Even smaller padding for very small screens */
+  }
+  
+  .title {
+    font-size: 2rem;
   }
 }
