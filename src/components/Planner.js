@@ -43,13 +43,26 @@ export default function Planner({ plan, onAdd, onRemove, onRecipeClick }) {
       <div className={styles.searchSection}>
         <h3>Add Meal</h3>
         <form onSubmit={handleSearch} className={styles.searchForm}>
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search for a meal (e.g. Pasta)"
-            className={styles.input}
-          />
+          <div className={styles.searchWrapper}>
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search for a meal (e.g. Pasta)"
+              className={styles.input}
+            />
+            {searchResults.length > 0 && (
+              <div className={styles.results}>
+                {searchResults.slice(0, 5).map(meal => (
+                  <div key={meal.idMeal} className={styles.resultItem} onClick={() => handleAddMeal(meal)}>
+                    <img src={meal.strMealThumb} alt="" className={styles.thumb} />
+                    <span>{meal.strMeal}</span>
+                    <span className={styles.addIcon}>+</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <select 
             value={selectedDay} 
             onChange={(e) => setSelectedDay(e.target.value)}
@@ -61,18 +74,6 @@ export default function Planner({ plan, onAdd, onRemove, onRecipeClick }) {
           </select>
           <button type="submit" className={styles.button}>Search</button>
         </form>
-
-        {searchResults.length > 0 && (
-          <div className={styles.results}>
-            {searchResults.slice(0, 5).map(meal => (
-              <div key={meal.idMeal} className={styles.resultItem} onClick={() => handleAddMeal(meal)}>
-                <img src={meal.strMealThumb} alt="" className={styles.thumb} />
-                <span>{meal.strMeal}</span>
-                <span className={styles.addIcon}>+</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className={styles.weekGrid}>

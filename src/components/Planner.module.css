@@ -28,8 +28,15 @@
   font-size: 1rem;
 }
 
-.input {
+.searchWrapper {
+  position: relative;
   flex: 1;
+  min-width: 150px;
+}
+
+.input {
+  width: 100%;
+  /* Global styles handle appearance */
 }
 
 .button {
@@ -42,15 +49,19 @@
 }
 
 .results {
-  margin-top: 1rem;
-  background: var(--bg-card); /* Use theme background */
+  margin-top: 0.5rem; /* Small gap */
+  background: var(--bg-card);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border);
-  position: absolute; /* Float above content */
+  position: absolute;
+  top: 100%; /* Position directly below input */
+  left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 50; /* Ensure it's above everything */
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .resultItem {
@@ -94,11 +105,7 @@
   width: 100%;
 }
 
-.searchInput {
-  composes: input from global;
-  flex: 1;
-  min-width: 150px; /* Allow shrinking further */
-}
+/* Removed duplicate .searchInput block as it's now handled by .searchWrapper and .input */
 
 .dayCard {
   composes: glass from global;
