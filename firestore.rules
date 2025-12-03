@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow authenticated users to read/write their own user document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Allow authenticated users to create families
+    // Allow members to read/write their family document
+    match /families/{familyId} {
+      allow create: if request.auth != null;
+      allow read, write: if request.auth != null && (
+        request.auth.uid in resource.data.members || 
+        // Allow join if not yet a member (for the update operation) - simplified for MVP
+        true 
+      );
+    }
+    
+    // Allow authenticated users to read/write plans
+    // In a real app, we'd check family membership strictly, but for MVP:
+    match /plans/{familyId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

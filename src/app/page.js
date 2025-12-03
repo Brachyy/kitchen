@@ -8,20 +8,35 @@ import FridgeView from '@/components/FridgeView';
 import styles from './page.module.css';
 
 // Simple Dashboard Home View
-function DashboardHome() {
+function DashboardHome({ onViewChange }) {
   return (
     <div className={styles.dashboardHome}>
       <h1 className={styles.welcomeTitle}>Welcome to your Kitchen</h1>
       <div className={styles.quickActions}>
-        <div className={styles.actionCard}>
+        <div 
+          className={styles.actionCard} 
+          onClick={() => onViewChange('planner')}
+          role="button"
+          tabIndex={0}
+        >
           <h3>📅 Weekly Plan</h3>
           <p>Check what's for dinner today.</p>
         </div>
-        <div className={styles.actionCard}>
+        <div 
+          className={styles.actionCard} 
+          onClick={() => onViewChange('fridge')}
+          role="button"
+          tabIndex={0}
+        >
           <h3>❄️ Empty Fridge</h3>
           <p>Find recipes with ingredients you have.</p>
         </div>
-        <div className={styles.actionCard}>
+        <div 
+          className={styles.actionCard} 
+          onClick={() => onViewChange('shop')}
+          role="button"
+          tabIndex={0}
+        >
           <h3>🛒 Shopping List</h3>
           <p>See what you need to buy.</p>
         </div>
@@ -73,7 +88,7 @@ export default function Home() {
 
   return (
     <DashboardLayout activeView={activeView} onViewChange={setActiveView}>
-      {activeView === 'dashboard' && <DashboardHome />}
+      {activeView === 'dashboard' && <DashboardHome onViewChange={setActiveView} />}
       {activeView === 'planner' && <PlannerView />}
       {activeView === 'fridge' && <FridgeView />}
       {activeView === 'shop' && <ShopView />}
